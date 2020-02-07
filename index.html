@@ -25,8 +25,80 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+
+<!-- section 1 -->
+<section data-markdown><script type="text/template">
+	## Continuous-Time Trajectory Representation
+	- for {Lidar,Visual}-inertial Fusion in 3D SLAM <!-- .element: class="fragment" -->
+	- using higher order rigid body motion interpolation methods <!-- .element: class="fragment" -->
+	- with efficient closed-form analytic derivatives <!-- .element: class="fragment" -->
+	<small>
+		Talk @ Google on February 7th, 2020<br>
+		by Adrian Haarbach
+	</small>
+</script></section>
+
+<!-- section 2 -->
+<section>
+	<section>
+		<h4>Lidar-intertial SLAM</h4>
+		<embed src="http://static.adrian-haarbach.de/mscthesis_adrian_slides/#/4/2" width="100%" height="600px"></embed>
+		<small><a href="http://static.adrian-haarbach.de/mscthesis_adrian_slides/index.html#/4/2">MSC</a></small>
+	</section>
+	<section>
+		<h4>Rolling Shutter</h4>
+		<embed src="https://pdfs.semanticscholar.org/ab93/fdb08e32e94f5d6cd55ef7ef41719a2a9f4c.pdf" width="100%" height="500px" 
+		type="application/pdf"></embed>
+	</section>
+	<section>
+		<h4>Event Cameras</h4>
+		<embed src="http://rpg.ifi.uzh.ch/docs/TRO18_Mueggler.pdf" width="100%" height="500px" 
+		type="application/pdf"></embed>
+	</section>
+</section>
+
+<!-- section 3 -->
+<section>
+	<section>
+		<h4>higher order interpolation methods</h4>
+		<embed src="http://www.adrian-haarbach.de/interpolation-methods/#video" width="100%" height="600px"></embed>
+		<small><a href="http://www.adrian-haarbach.de/interpolation-methods/#video">3DV 2018</a></small>
+	</section>
+</section>
+
+<!-- section 4 -->
+<section>
+	<h6>Analytic Derivatives</h6>
+	<section>
+		<embed src="http://www.adrian-haarbach.de/interpolation-methods/doc/haarbach2018survey.pdf" width="100%" height="500px" 
+		type="application/pdf"></embed>
+		<a href="https://github.com/adrelino/interpolation-methods/blob/master/src/libinterpolviz/include/interpolviz/trajectory/TrajectorySplineFusion.h#L78">SplineFusion</a>
+		<a href="https://github.com/adrelino/interpolation-methods/blob/master/src/libinterpolviz/include/interpolviz/trajectory/TrajectorySplineKimKimShin.h#L68">KimKimShin</a>
+	</section>
+
+	<section>
+		<embed src="https://arxiv.org/pdf/1805.02543.pdf" width="100%" height="500px" 
+		type="application/pdf"></embed>
+		<a href="https://github.com/hovren/kontiki/tree/master/cpplib/include/kontiki/trajectories">kontiki</a>
+		<a href="https://github.com/hovren/minimal_ceres_sophus">minimal_ceres_sophus</a>
+	</section>
+
+	<section>
+		<embed src="https://arxiv.org/pdf/1911.08860.pdf" width="100%" height="500px" 
+		type="application/pdf"></embed>
+		<a href="https://gitlab.com/tum-vision/lie-spline-experiments">lie-spline-experiments</a>
+		<a href="https://gitlab.com/VladyslavUsenko/basalt-headers/-/tree/master/include/basalt/spline">basalt spline</a>
+	</section>
+</section>
+
+<!-- section 5 -->
+<section data-markdown><script type="text/template">
+	## Summary
+	- split interpolation is faster and usually preferable in {...}-inertial fusion<!-- .element: class="fragment" -->
+	- the derivative computation is also less involved, especially for incoorporating accelerometer measurements<!-- .element: class="fragment" -->
+	- if using joint interpolation, consider Dual Quaternions as alternative to Sophus SE(3)<!-- .element: class="fragment" -->
+</script></section>
+
 			</div>
 		</div>
 
@@ -41,6 +113,7 @@
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/math/math.js', async:true},
 					{ src: 'plugin/highlight/highlight.js' },
 					{ src: 'plugin/notes/notes.js', async: true }
 				]
